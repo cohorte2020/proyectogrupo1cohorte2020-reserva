@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+//import styled from 'styled-components';
+import {Formulario, Label} from './elementos/Formularios';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faExclamationTriangle}  from '@fortawesome/free-solid-svg-icons';
+import Input from './component/Input';
 
-function App() {
+//import logo from './logo.svg';
+//import './App.css';
+
+// componente
+const App = () => {
+  const [usuario, cambiarUsuario] = useState({campo: '', valido: null});
+  const [password, cambiarPassword] = useState({campo: '', valido: null});
+  const [password2, cambiarPassword2] = useState({campo: '', valido: null});
+
+  const expresiones= {
+    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    password: /^.{8,12}$/
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+        <Formulario action="">
+          <Input
+              estado= {usuario}
+              cambiarEstado= {cambiarUsuario}
+              tipo="text"
+              label="Usuario"
+              placeholder="sucorreo@suservidor.com"
+              name= "usuario"
+              leyendaError="debe contener @"
+              expresionRegular="{exoresiones.correo}"
+          
+          />
+        </Formulario>
+    
+    </main>
+    
   );
 }
 
