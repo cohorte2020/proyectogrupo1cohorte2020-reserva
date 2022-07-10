@@ -1,0 +1,5 @@
+com/relegados/javaback/api/Connect.class
+com/relegados/javaback/Servlet/ApiReservas.class
+com/relegados/javaback/db/Queries.class
+com/relegados/javaback/db/DataBase.class
+com/relegados/javaback/api/ApiRequest.class
