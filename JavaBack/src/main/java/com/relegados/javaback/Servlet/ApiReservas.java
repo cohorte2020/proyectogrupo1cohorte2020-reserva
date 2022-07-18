@@ -29,16 +29,38 @@ public class ApiReservas extends HttpServlet {
             Le paso la tabla por parametro GET
             http://localhost:8080/JavaBack/api?table=users
             */ 
+            String acction = request.getParameter("acction");
             String table = request.getParameter("table");
             String column = request.getParameter("column");
             String data = request.getParameter("data");
+            String data_from = request.getParameter("data_from");
+            String data_to = request.getParameter("data_to");
+            String users_id = request.getParameter("users_id");
+            String products_id = request.getParameter("products_id");
+            
             String responseJson = null;
             
+            switch (acction) {
+                case "select":
+                    responseJson = api.selectFrom(table);
+                    break;
+                case "where":
+                    responseJson = api.selectFromWhere(table, column, data);
+                    break;
+                case "booking":
+                    responseJson = api.insertBooking(data_from, data_to, users_id, products_id);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            
+            /*
             if (column != null & data != null){
                 responseJson = api.selectFromWhere(table, column, data);
             } else {
                 responseJson = api.selectFrom(table);
             }
+            */
             
             PrintWriter out = response.getWriter();
             response.setContentType("application/json");
