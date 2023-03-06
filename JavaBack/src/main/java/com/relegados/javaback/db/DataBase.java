@@ -19,7 +19,7 @@ public class DataBase {
         Connection conn = null;  
         try {  
             // ubicación de la base (path absoluto)
-            String url = "jdbc:sqlite:/home/fddiaz/Projects/proyecto-reservas/DataBase/base.sqlite3";  
+            String url = "jdbc:sqlite:/home/fddiaz/Projects/ISPC/proyectogrupo1cohorte2020-reserva/DataBase/base.sqlite3";  
             // creando la conecxion 
             conn = DriverManager.getConnection(url);  
             
